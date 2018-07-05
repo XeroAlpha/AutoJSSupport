@@ -17,22 +17,17 @@
     along with this program.  If not, see [http://www.gnu.org/licenses/].
 */
 
-/*
-    Usage:
-    var support = require('./support');
-*/
-
 var timers = {}, ascu = android.os.SystemClock.uptimeMillis;
-console.time = function(label) {
+console.time = console.time || function(label) {
     timers[label] = ascu();
 };
-console.timeEnd = function(label) {
+console.timeEnd = console.timeEnd || function(label) {
     var result = ascu() - timers[label];
     delete timers[label];
     console.log(label + ": " + result + "ms");
 };
-console.trace = function captureStack(msg) {
+console.trace = console.trace || function captureStack(message) {
     var k = {};
     Error.captureStackTrace(k, captureStack);
-    console.log("Trace: " + msg + "\n" + k.stack);
+    console.error("Trace: " + util.format.apply(util, arguments) + "\n" + k.stack);
 };

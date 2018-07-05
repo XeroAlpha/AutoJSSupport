@@ -1,5 +1,7 @@
 var support = require('./support');
 
-console.time("traceTime");
-console.trace("Show Message");
-console.timeEnd("traceTime")
+console.time('sleep-100ms');
+sleep(100);
+console.timeEnd('sleep-100ms');
+
+console.trace('Show Me');
