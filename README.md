@@ -5,6 +5,17 @@
 目前已支持功能：
 - console的time、timeEnd、trace函数
 
+## 如何使用
+
+如果您只需要在一个脚本文件中使用本支持包，您只需要将 `support.js` 中的内容拷贝到脚本的开头即可。
+
+如果您需要在多个脚本文件中使用本支持包，请做以下步骤：
+1. 将本项目中的 `support.js` 拷贝到您需要使用支持包的项目的根目录。
+2. 在每个需要支持包的脚本的开头加上： 
+```js
+var support = require('./support.js'); // 此处填写support.js相对于这个脚本的路径
+```
+
 ## console.time(label)
 * `label` {String} 计时器标签
 
@@ -13,7 +24,7 @@
 当调用 `console.timeEnd()` 时，可以使用相同的 `label` 来停止定时器，并以毫秒为单位将持续时间输出到控制台。
 重复启动同一个标签的定时器会覆盖之前启动同一标签的定时器。
 
-## console.time(label)
+## console.timeEnd(label)
 * `label` {String} 计时器标签
 
 停止之前通过调用 `console.time()` 启动的定时器，并打印结果到控制台。
